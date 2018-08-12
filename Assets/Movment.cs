@@ -59,7 +59,7 @@ public class Movment : MonoBehaviour
 			animator.SetBool("IsMoving", Horizontal != 0 || Vertical != 0);
 		Vector3 heading = offset * new Vector3(Horizontal, 0, Vertical).normalized;
 		float rotateSpeed = rotationSpeed;
-		if (PlayerControlled && Input.GetButton("Fire1"))
+		if (PlayerControlled && Input.GetButton("Fire3"))
 		{
 			heading *= 1.5f;
 			rotateSpeed *= 1.5f;
@@ -104,7 +104,7 @@ public class Movment : MonoBehaviour
 		{
 			if (collider.transform != transform)
 			{
-				collider.gameObject.SendMessage("ImpairMovement");
+				collider.gameObject.SendMessage("ImpairMovement", SendMessageOptions.DontRequireReceiver);
 				var rb = collider.GetComponent<Rigidbody>();
 				if (rb)
 				{
